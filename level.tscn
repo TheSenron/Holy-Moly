@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq2wwsd6g8o7e"]
+
+[ext_resource type="Script" uid="uid://bqg2ysrhqejy8" path="res://Games/player.gd" id="1_vonw3"]
+[ext_resource type="Texture2D" uid="uid://b5nknxobf52ha" path="res://pngimg.com - mole_PNG5.png" id="2_f2txt"]
+[ext_resource type="Script" uid="uid://dclmv1yvg0o2d" path="res://Games/drill.gd" id="2_oi3di"]
+[ext_resource type="Texture2D" uid="uid://cbwnhtffp1pij" path="res://42-Reamers-3.png" id="4_1ainy"]
+[ext_resource type="Texture2D" uid="uid://b321c6oquefdw" path="res://8adcefac955795183e9b64ccaf046ac4-995273909.jpg" id="5_n6hdu"]
+[ext_resource type="Texture2D" uid="uid://siduy6l4cdy8" path="res://Stone-Texture-wall-large-rock-grey-image-2169252814.jpg" id="6_1ainy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ainy"]
+height = 107.000015
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ainy"]
+size = Vector2(1017, 742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6hdu"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Chunk Container" type="Node2D" parent="."]
+
+[node name="Spawner" type="Node" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(1000, 0)
+collision_mask = 6
+script = ExtResource("1_vonw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(92, -27.000002)
+scale = Vector2(0.15053573, 0.13142857)
+texture = ExtResource("2_f2txt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(96.5, 18.5)
+scale = Vector2(10.08, 0.99999994)
+shape = SubResource("CapsuleShape2D_1ainy")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2(220, 0)
+
+[node name="Drill" type="Area2D" parent="."]
+collision_layer = 4
+script = ExtResource("2_oi3di")
+base_speed = 75.0
+catchup_speed = 150.0
+safe_margin = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Drill"]
+position = Vector2(91.99994, 16.499989)
+scale = Vector2(1.3914286, 1.9225)
+texture = ExtResource("4_1ainy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drill"]
+position = Vector2(79.5, -2)
+shape = SubResource("RectangleShape2D_1ainy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+visibility_layer = 2
+position = Vector2(3217, 3.000061)
+scale = Vector2(2.2815626, 0.40600005)
+texture = ExtResource("5_n6hdu")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="WallTop" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 2)
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2(2200, -427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
+position = Vector2(2200, -427)
+scale = Vector2(500, 3)
+shape = SubResource("RectangleShape2D_n6hdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/WallTop"]
+position = Vector2(2200, -427)
+scale = Vector2(3, 0.017)
+texture = ExtResource("6_1ainy")
+
+[node name="WallBot" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 860)
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2(2200, -427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBot"]
+position = Vector2(2200, -427)
+scale = Vector2(500, 3)
+shape = SubResource("RectangleShape2D_n6hdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/WallBot"]
+position = Vector2(2200, -427)
+scale = Vector2(3, 0.017)
+texture = ExtResource("6_1ainy")
+
+[node name="WallEnd" type="StaticBody2D" parent="Walls"]
+position = Vector2(6461, 860)
+rotation = 1.5707964
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2(2200, -427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallEnd"]
+position = Vector2(2200, -427)
+scale = Vector2(500, 3)
+shape = SubResource("RectangleShape2D_n6hdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/WallEnd"]
+position = Vector2(2200, -427)
+scale = Vector2(3, 0.017)
+texture = ExtResource("6_1ainy")
