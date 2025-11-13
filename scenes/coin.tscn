@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgvc1utqsyqvi"]
+
+[ext_resource type="Script" uid="uid://doeoaoij6m1a" path="res://coin.gd" id="1_i64fm"]
+[ext_resource type="Texture2D" uid="uid://cwnj427nkcc8q" path="res://66672-coin-transparent-gold-icon-free-photo-png.png" id="2_11l1o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5j5c"]
+radius = 23.086792
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_i64fm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.250122, -3.2500153)
+shape = SubResource("CircleShape2D_v5j5c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.2500055, -3.2499864)
+scale = Vector2(0.034740258, 0.03424204)
+texture = ExtResource("2_11l1o")

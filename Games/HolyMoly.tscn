@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b55nth8vw0ujd"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Chunk Container" type="Node2D" parent="."]
+
+[node name="Spawner" type="Node" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+
+[node name="Boost Timer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2(220, 0)
+
+[node name="Drill" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drill"]
+
+[node name="ProximityArea" type="Area2D" parent="Drill"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

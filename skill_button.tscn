@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://3o8fh82j061b"]
+
+[ext_resource type="Texture2D" uid="uid://c3eec1xrf38pt" path="res://icon.svg" id="1_ncwhr"]
+[ext_resource type="Script" uid="uid://ddm4as3i7512j" path="res://skill_button.gd" id="2_xokeq"]
+
+[node name="SkillButton" type="TextureButton"]
+offset_right = 130.805
+offset_bottom = 129.96
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("1_ncwhr")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_xokeq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3.2399988, 3.2400012)
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.471657
+offset_top = -37.960014
+offset_right = -8.471657
+offset_bottom = 55.039993
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1, 0.73333496)
+
+[node name="SkillLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0/1
+"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="SkillBranch" type="Line2D" parent="."]
+top_level = true
+z_index = -1
+width = 8.0
+default_color = Color(0.23392546, 0.23392546, 0.23392543, 1)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

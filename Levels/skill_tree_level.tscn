@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=3 uid="uid://2f2rfm5e0x6x"]
+
+[ext_resource type="Script" uid="uid://cce1q4nmqoy73" path="res://skill_tree_level.gd" id="1_lc3b5"]
+[ext_resource type="PackedScene" uid="uid://3o8fh82j061b" path="res://skill_button.tscn" id="2_fy46i"]
+[ext_resource type="Texture2D" uid="uid://0jly2auodhgj" path="res://Sprites/Icons/MoleSpeedBuff.jpeg" id="3_b7n4x"]
+[ext_resource type="Texture2D" uid="uid://s1bdgx4tyyjk" path="res://Sprites/Icons/WormSpeedBuff.jpeg" id="4_7wf8r"]
+[ext_resource type="Texture2D" uid="uid://dlji1qinbp7mc" path="res://Sprites/Icons/LessOil.jpeg" id="5_i4253"]
+[ext_resource type="Texture2D" uid="uid://dvrmpmt4tl7dy" path="res://Sprites/Icons/HPUp.jpeg" id="6_tiwu0"]
+[ext_resource type="Texture2D" uid="uid://do30jbgtcpcgn" path="res://Sprites/Icons/CoinsScore.jpeg" id="7_nxd1w"]
+
+[node name="SkillTreeLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lc3b5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.25361642, 0.15388823, 0.07404951, 0.5921569)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 298.0
+offset_right = 1152.0
+offset_bottom = 946.0
+scale = Vector2(1, 0.54)
+color = Color(0.003921569, 0.03137255, 0.015686275, 0.2901961)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 680.0
+scale = Vector2(1, 0.4399998)
+color = Color(0.09494474, 0.03732494, 0.041927062, 0.84313726)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -311.0
+offset_right = 190.0
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "Skill Tree"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextLevel" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -80.0
+offset_right = -29.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Next Level"
+
+[node name="SkillButton_1" parent="." instance=ExtResource("2_fy46i")]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 302.0
+offset_right = 231.805
+offset_bottom = 431.96002
+texture_normal = ExtResource("3_b7n4x")
+
+[node name="SkillButton_2" parent="SkillButton_1" instance=ExtResource("2_fy46i")]
+layout_mode = 0
+offset_left = 388.0
+offset_top = -153.33333
+offset_right = 518.805
+offset_bottom = -23.373322
+scale = Vector2(1, 1)
+disabled = true
+texture_normal = ExtResource("4_7wf8r")
+
+[node name="SkillButton_6" parent="SkillButton_1/SkillButton_2" instance=ExtResource("2_fy46i")]
+layout_mode = 0
+offset_left = 502.6667
+offset_top = -1.3333334
+offset_right = 633.4717
+offset_bottom = 128.62668
+scale = Vector2(1, 1)
+disabled = true
+
+[node name="SkillButton_3" parent="SkillButton_1" instance=ExtResource("2_fy46i")]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 124.00001
+offset_right = 518.805
+offset_bottom = 253.96002
+scale = Vector2(1, 1)
+disabled = true
+texture_normal = ExtResource("5_i4253")
+
+[node name="SkillButton_4" parent="SkillButton_1/SkillButton_3" instance=ExtResource("2_fy46i")]
+layout_mode = 0
+offset_left = 502.6667
+offset_top = -97.333336
+offset_right = 633.4717
+offset_bottom = 32.62667
+scale = Vector2(1, 1)
+disabled = true
+texture_normal = ExtResource("6_tiwu0")
+
+[node name="SkillButton_5" parent="SkillButton_1/SkillButton_3" instance=ExtResource("2_fy46i")]
+layout_mode = 0
+offset_left = 504.00003
+offset_top = 80.00001
+offset_right = 634.80505
+offset_bottom = 209.96002
+scale = Vector2(1, 1)
+disabled = true
+texture_normal = ExtResource("7_nxd1w")
+
+[connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckd52cenhevm2"]
+
+[ext_resource type="Script" uid="uid://5ycw2yx4y2sc" path="res://scenes/ölfeld.gd" id="1_jnj66"]
+[ext_resource type="Texture2D" uid="uid://7u3vwxw5fn4j" path="res://oilbarrel.png" id="2_vv6do"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8h1pn"]
+
+[node name="Ölfeld" type="Area2D"]
+script = ExtResource("1_jnj66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(17.28, 16.960001)
+shape = SubResource("CircleShape2D_8h1pn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vv6do")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

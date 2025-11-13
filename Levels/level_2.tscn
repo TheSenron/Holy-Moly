@@ -1,0 +1,261 @@
+[gd_scene load_steps=20 format=3 uid="uid://82ilqnojv26a"]
+
+[ext_resource type="Script" uid="uid://mxix0pkxvsqf" path="res://Levels/level.gd" id="1_hnbmx"]
+[ext_resource type="Script" uid="uid://bqg2ysrhqejy8" path="res://Games/player.gd" id="2_40bul"]
+[ext_resource type="Texture2D" uid="uid://b5nknxobf52ha" path="res://pngimg.com - mole_PNG5.png" id="3_sgyqn"]
+[ext_resource type="Script" uid="uid://dclmv1yvg0o2d" path="res://Games/drill.gd" id="4_8p0gf"]
+[ext_resource type="Texture2D" uid="uid://cbwnhtffp1pij" path="res://42-Reamers-3.png" id="5_vyli3"]
+[ext_resource type="Script" uid="uid://2euk7elhcr3d" path="res://coincounter.gd" id="6_5bt5e"]
+[ext_resource type="Texture2D" uid="uid://b321c6oquefdw" path="res://8adcefac955795183e9b64ccaf046ac4-995273909.jpg" id="7_26eg1"]
+[ext_resource type="Texture2D" uid="uid://siduy6l4cdy8" path="res://Stone-Texture-wall-large-rock-grey-image-2169252814.jpg" id="8_4472k"]
+[ext_resource type="PackedScene" uid="uid://dgvc1utqsyqvi" path="res://scenes/coin.tscn" id="9_tc011"]
+[ext_resource type="PackedScene" uid="uid://ckd52cenhevm2" path="res://scenes/ölfeld.tscn" id="10_eca3n"]
+[ext_resource type="Script" uid="uid://ry4p2tln1hlw" path="res://game_over_screen.gd" id="11_gpu27"]
+[ext_resource type="Script" uid="uid://ci1lu3f6fs048" path="res://win_screen.gd" id="12_ldt6e"]
+[ext_resource type="Script" uid="uid://cpnb4mgykt7iq" path="res://win_zone.gd" id="13_rfu05"]
+[ext_resource type="Texture2D" uid="uid://fqlyo8oqwffb" path="res://holy moly meme.PNG" id="14_mghsa"]
+[ext_resource type="Script" uid="uid://df2ra7eikrcks" path="res://next_level.gd" id="15_mxo4x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ainy"]
+height = 107.000015
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ainy"]
+size = Vector2(1017, 742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6hdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fedht"]
+size = Vector2(22.39837, 51.58802)
+
+[node name="Level_1" type="Node2D"]
+script = ExtResource("1_hnbmx")
+
+[node name="Chunk Container" type="Node2D" parent="."]
+
+[node name="Spawner" type="Node" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(1001, 0)
+scale = Vector2(0.44, 0.3711435)
+collision_mask = 6
+motion_mode = 1
+wall_min_slide_angle = 1.5707964
+script = ExtResource("2_40bul")
+accel = 500.0
+max_speed = 500.0
+rot_speed = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-74.1705, -45.413162)
+scale = Vector2(0.15053573, 0.13142857)
+texture = ExtResource("3_sgyqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-69.6716, 0.08676815)
+scale = Vector2(10.08, 0.99999994)
+shape = SubResource("CapsuleShape2D_1ainy")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-166.1716, -18.413239)
+offset = Vector2(220, 0)
+
+[node name="Drill" type="Area2D" parent="."]
+collision_layer = 4
+script = ExtResource("4_8p0gf")
+base_speed = 150.0
+catchup_speed = 300.0
+safe_margin = 350.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Drill"]
+position = Vector2(91.99994, 16.499989)
+scale = Vector2(1.3914286, 1.9225)
+texture = ExtResource("5_vyli3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drill"]
+position = Vector2(79.5, -2)
+shape = SubResource("RectangleShape2D_1ainy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="coincounter" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("6_5bt5e")
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+visibility_layer = 2
+position = Vector2(3217, 3.000061)
+scale = Vector2(2.2815626, 0.40600005)
+texture = ExtResource("7_26eg1")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="WallTop" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 2)
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2(2200, -427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
+position = Vector2(2200, -427)
+scale = Vector2(500, 3)
+shape = SubResource("RectangleShape2D_n6hdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/WallTop"]
+position = Vector2(2200, -427)
+scale = Vector2(3, 0.017)
+texture = ExtResource("8_4472k")
+
+[node name="WallBot" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 860)
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2(2200, -427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBot"]
+position = Vector2(2200, -427)
+scale = Vector2(500, 3)
+shape = SubResource("RectangleShape2D_n6hdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/WallBot"]
+position = Vector2(2200, -427)
+scale = Vector2(3, 0.017)
+texture = ExtResource("8_4472k")
+
+[node name="WallEnd" type="StaticBody2D" parent="Walls"]
+position = Vector2(6461, 860)
+rotation = 1.5707964
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2(2200, -427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallEnd"]
+position = Vector2(2200, -427)
+scale = Vector2(500, 3)
+shape = SubResource("RectangleShape2D_n6hdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/WallEnd"]
+position = Vector2(2200, -427)
+scale = Vector2(3, 0.017)
+texture = ExtResource("8_4472k")
+
+[node name="Coin" parent="." instance=ExtResource("9_tc011")]
+position = Vector2(1316, 197)
+
+[node name="WurmSpeed" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WurmSpeed"]
+
+[node name="Sprite2D" type="Sprite2D" parent="WurmSpeed"]
+
+[node name="Ölfeld" parent="." instance=ExtResource("10_eca3n")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="GameOverScreen" type="Control" parent="CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 400.0
+script = ExtResource("11_gpu27")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -88.0
+offset_right = 156.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="CanvasLayer2/GameOverScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="CanvasLayer2/GameOverScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play Again"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer2/GameOverScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="WinScreen" type="Control" parent="CanvasLayer2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 400.0
+script = ExtResource("12_ldt6e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/WinScreen"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 300.0
+
+[node name="You win" type="Label" parent="CanvasLayer2/WinScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 44
+text = "Holy Moly!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer2/WinScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="CoinsLabel" type="Label" parent="CanvasLayer2/WinScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer2/WinScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="PlayAgain" type="Button" parent="CanvasLayer2/WinScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play Again"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer2/WinScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="WinZone" type="Area2D" parent="."]
+position = Vector2(6804, 0)
+script = ExtResource("13_rfu05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
+position = Vector2(1, 2)
+scale = Vector2(4.9200015, 15.5191)
+shape = SubResource("RectangleShape2D_fedht")
+
+[node name="Sprite2D" type="Sprite2D" parent="WinZone"]
+scale = Vector2(0.16000032, 1.1199994)
+texture = ExtResource("14_mghsa")
+
+[node name="NextLevel" type="Area2D" parent="."]
+script = ExtResource("15_mxo4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevel"]
+
+[node name="Sprite2D" type="Sprite2D" parent="NextLevel"]
+
+[connection signal="pressed" from="CanvasLayer2/GameOverScreen/VBoxContainer/PlayAgain" to="CanvasLayer2/GameOverScreen" method="_on_play_again_pressed"]
+[connection signal="pressed" from="CanvasLayer2/GameOverScreen/VBoxContainer/MainMenu" to="CanvasLayer2/GameOverScreen" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer2/WinScreen/VBoxContainer/PlayAgain" to="CanvasLayer2/GameOverScreen" method="_on_play_again_pressed"]
+[connection signal="pressed" from="CanvasLayer2/WinScreen/VBoxContainer/MainMenu" to="CanvasLayer2/GameOverScreen" method="_on_main_menu_pressed"]
+[connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
